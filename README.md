@@ -10,6 +10,12 @@ The HMBA WB Atlas v0.1 is a cross-species whole-brain (WB) single-cell RNA-seq t
 
 ---
 
+## Sampling overview
+
+<img width="4472" height="3976" alt="fig14_sampling_summary" src="https://github.com/user-attachments/assets/3fdf84a9-15fd-4c02-9d9c-af3b0b34a58f" />
+
+---
+
 ## Pipeline
 
 ![HMBA WB Atlas workflow](docs/workflow.png)
