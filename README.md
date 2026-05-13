@@ -1,4 +1,5 @@
 # HMBA WB Atlas — v0.1
+<img width="1153" height="610" alt="image" src="https://github.com/user-attachments/assets/6dfda292-97b7-4b30-b75c-6d11b12c5dea" />
 
 The HMBA WB Atlas v0.1 is a cross-species whole-brain (WB) single-cell RNA-seq taxonomy from the Human Mammalian Brain Atlas (HMBA) project, covering **human, macaque, and marmoset**, with **mouse** as the reference taxonomy. This is the first internal data share.
 
