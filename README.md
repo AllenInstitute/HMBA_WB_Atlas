@@ -30,7 +30,7 @@ s3://hmba-cross-species-wg-802451596237-us-west-2/HMBA/Aim1_Atlases/HMBA_WB_Atla
 {species}_{neighborhood}.zarr
 ```
 
-- `species` ∈ `{human, macaque, marmoset}`
+- `species` ∈ `{human, macaque, marmoset, mouse}`
 - `neighborhood` ∈ `{HY-EA-Glut-GABA, TH-EPI-Glut, Pallium-Glut, NN-IMN, Subpallium-GABA, MB-HB}`
 - `var`: 15,138 mouse/human/marmoset/macaque orthologs.
 - `obs`: full metadata (see [Metadata fields](#metadata-fields)). All cells passing basic QC are kept. Cells flagged as junk during the subsequent global or per-neighborhood integrations are not removed; they are marked with a `1` in the `junk_global` or `junk_neigh` column, respectively.
@@ -55,7 +55,7 @@ A single Google Sheets workbook with sheets for each level of the hierarchy:
 ```
 https://docs.google.com/spreadsheets/d/1ibqQZTImpm39rzf_o0o9un2_yZmJaKUcc_bvRDSMzL8/edit?usp=sharing
 ```
-It might be updated to append more columns but the link stays the same.
+It might be updated to append more columns, but the link stays the same.
 
 - **`cl` sheet** — one row per cluster (`cluster`). Columns: `cluster id`, `cluster`, `species`, `neighborhood`, `subclass`, `class`, `number of cells`, top 3 brain regions / ROIs, QC summaries (median gene counts, UMI counts, mitochondrial %, doublet scores, distance to closest mouse-cluster centroid), study/donor composition + entropy, sex, sample (10X loads), transferred-label majority and probability for `BG:*`, `Siletti:*`, `marmosetSubcortical:*` taxonomies, and a `note` column flagging junk or low-quality clusters.
 - **`subclass` sheet** — one row per subclass per species.
@@ -68,7 +68,16 @@ scVI latent coordinates for **almost every cell** (per species and per neighborh
 ```
 scVI_embeddings/{species}_{neighborhood}.csv
 ```
-Indexed by cell barcode. Note: a few cells from undersampled donors do not have scVI embeddings, because those donors were excluded from scVI training due to having too few cells after subsampling.
+Indexed by cell names. 
+Note: 11 cells from 2 donors do not have scVI embeddings and therefore do not have a cluster assignment. This is because those two donors were excluded from scVI training due to having too few cells after subsampling. These cells are:
+- 8 cells from human Pallium-Glut
+- 3 cells from macaque Subpallium-GABA
+
+### 5. Global UMAP
+```
+umap_with_metadata.csv
+```
+2D UMAP coordinates for all 21 million cells, with additional metadata (subclass, class, neighborhood, cl, species) for color-coding. These were computed using the seeded UMAP + projection approach from the scrattch.bigcat package, with projected scVI embeddings from the global integration. 
 
 ---
 
