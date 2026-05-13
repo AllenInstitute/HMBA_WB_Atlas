@@ -37,7 +37,7 @@ for _, row in input_df.iterrows():
     os.makedirs(lib_results, exist_ok=True)
 
     s3_out_prefix = f"NeMO_atac_process/{library}/"
-    expected_files = [h5ad_filename, "frag_size_distr.png", "tsse_by_frags.png", "rerun.txt"]
+    expected_files = [h5ad_filename, "frag_size_distr.png", "tsse_by_frags.png", f"metadata_{library}.csv", f"metadata_fsd_{library}.csv"]
 
     try:
         ## Skip if already processed (h5ad and plots exist on S3)
@@ -75,9 +75,9 @@ for _, row in input_df.iterrows():
             ## TSSe by number of fragments plot
             snap.pl.tsse(atac_h5ad, interactive=False, show=False, out_file=pjoin(lib_results, "tsse_by_frags.png"), scale=2)
 
-            ## Write obs to s3 for easy QC visualization
-            obs_df = pd.DataFrame(adata.obs)
-            obs_df.to_csv(f"/results/metadata_{library}.csv")
+            ## Write obs and uns to s3 for easy QC visualization
+            obs_df = pd.DataFrame(adata.obs[:])
+            obs_df.write_csv(f"/results/metadata_{library}.csv")
             if 'frag_size_distr' in adata.uns:
                 fsd = pd.DataFrame(adata.uns['frag_size_distr'])
                 fsd.to_csv(f"/results/metadata_fsd_{library}.csv")
