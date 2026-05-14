@@ -3,7 +3,7 @@
 
 The HMBA WB Atlas v0.1 is a cross-species whole-brain (WB) single-cell RNA-seq taxonomy from the Human Mammalian Brain Atlas (HMBA) project, covering **human, macaque, and marmoset**, with **mouse** as the reference taxonomy. This is the first internal data share.
 
-- **Species:** human, macaque, marmoset (mouse used as reference).
+- **Species:** human, macaque, marmoset, mouse.
 - **Neighborhoods:** `HY-EA-Glut-GABA`, `TH-EPI-Glut`, `Pallium-Glut`, `NN-IMN`, `Subpallium-GABA`, `P-MY-CB-GABA`, `P-MY-CB-Glut`, `MB-Glut-Dopa-Sero`, and `MB-GABA`.
   - Note: the four midbrain–hindbrain neighborhoods (`P-MY-CB-GABA`, `P-MY-CB-Glut`, `MB-Glut-Dopa-Sero`, and `MB-GABA`) were integrated and shipped together as `MB-HB`.
 - **Hierarchy:** `neighborhood` → `class` → `subclass` → `cl` (cluster).
