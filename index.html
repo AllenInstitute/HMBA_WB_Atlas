@@ -468,22 +468,66 @@ code, pre, kbd {
   }
 
   function highlightOnScroll(headings) {
+    var list = Array.prototype.slice.call(headings);
+    if (!list.length) return;
+
     var links = {};
     Array.prototype.forEach.call(tocList.querySelectorAll('a'), function (a) {
       links[a.getAttribute('href').slice(1)] = a;
     });
 
+    var THRESHOLD = 120;   // px below the viewport top that counts as "here"
     var current = null;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        if (current) current.classList.remove('active');
-        current = links[entry.target.id];
-        if (current) current.classList.add('active');
-      });
-    }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
+    var lockedUntil = 0;
+    var queued = false;
 
-    Array.prototype.forEach.call(headings, function (h) { observer.observe(h); });
+    function activate(heading) {
+      var link = heading ? links[heading.id] : null;
+      if (link === current) return;
+      if (current) current.classList.remove('active');
+      current = link;
+      if (current) current.classList.add('active');
+    }
+
+    function update() {
+      queued = false;
+      if (Date.now() < lockedUntil) return;
+
+      // The final sections are shorter than a viewport, so the page runs out
+      // of scroll before their headings can reach THRESHOLD. Once the bottom
+      // is reached, the last heading is the one being read.
+      var scrollBottom = window.pageYOffset + window.innerHeight;
+      if (scrollBottom >= document.documentElement.scrollHeight - 2) {
+        activate(list[list.length - 1]);
+        return;
+      }
+
+      var active = list[0];
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].getBoundingClientRect().top > THRESHOLD) break;
+        active = list[i];
+      }
+      activate(active);
+    }
+
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    }
+
+    // A clicked link wins over whatever the scroll position implies, so that
+    // targets sitting in the last screenful still highlight.
+    tocList.addEventListener('click', function (event) {
+      var a = event.target.closest('a');
+      if (!a) return;
+      lockedUntil = Date.now() + 700;
+      activate(document.getElementById(a.getAttribute('href').slice(1)));
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
 })();
 </script>
