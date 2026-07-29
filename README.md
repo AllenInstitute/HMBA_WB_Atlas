@@ -15,6 +15,7 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 ## Contents
 
 - [At a glance](#at-a-glance)
+- [Regional annotation working groups](#regional-annotation-working-groups)
 - [Community annotation](#community-annotation)
 - [Data release](#data-release)
   - [1. AIT taxonomy files](#1-ait-taxonomy-files)
@@ -40,11 +41,30 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 
 ---
 
+## Regional annotation working groups
+
+Annotation is organized into working groups, each responsible for one brain region or cross-cutting slice of the taxonomy. Groups review the cell types in their region across all species, reconcile them against the reference taxonomies and the spatial data, and settle the subclass and class labels that ship. Questions about a specific region are best directed to its leads.
+
+| Region | Lead(s) |
+|---|---|
+| Neocortex | Rebecca Hodge |
+| Medial temporal lobe | Aaron Garcia, Yuanyuan Fu |
+| Basal ganglia | Nelson Johansen, Yuanyuan Fu |
+| Thalamus | Brian Long, Meghan Turner |
+| Hypothalamus | Fenna Krienen, Stephanie Seeman |
+| Midbrain, Medulla, Pons | Dan Yuan, Zizhen Yao, Cindy van Velthoven, Hongkui Zeng |
+| Cerebellum | Rebecca Hodge |
+| Spinal cord | Matthew Schmitz, Nelson Johansen |
+| Non-neuronal WB | Yuanyuan Fu |
+| Cross-species WB | Zizhen Yao, Trygve Bakken |
+
+---
+
 ## Community annotation
 
-Annotating a taxonomy this large is a community effort, and two routes for engaging with it are in progress.
+Annotating a taxonomy this large is a community effort. Two routes are in progress, and both will be made available to the [regional annotation working groups](#regional-annotation-working-groups).
 
-**ABC Atlas (BICAN).** The v0.5 data will be browsable through the ABC Atlas for BICAN, alongside the other BICAN taxonomies. *(Link to come.)*
+**ABC Atlas.** The v0.5 data will be browsable through the ABC Atlas. *(Link to come.)*
 
 **Taxonomy editing tool.** A taxonomy editing tool will be made available so annotators can propose and record changes to cluster, subclass, and class labels directly against the released taxonomy. *(Link to come.)*
 
