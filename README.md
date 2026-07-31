@@ -2,7 +2,7 @@
 
 <sub>BRAIN Initiative Cell Atlas Network (BICAN)</sub>
 
-<img width="1153" height="610" alt="HMBA WB Atlas overview" src="https://github.com/user-attachments/assets/6dfda292-97b7-4b30-b75c-6d11b12c5dea" />
+![From the completed mouse, cross-primate basal ganglia, and marmoset subcortical atlases, through the current cross-species consensus effort, to a whole-brain taxonomy across all four species](docs/overview_image.png)
 
 The **HMBA Whole-Brain (WB) Atlas** is a cross-species, whole-brain single-cell RNA-seq taxonomy. It covers **human, macaque, and marmoset**, using the **mouse and human whole-brain taxonomies** (Yao et al., Siletti et al.) as reference, and spans roughly **21 million cells**.
 
@@ -113,7 +113,17 @@ Reference assets for mapping new query data onto the HMBA WB taxonomy with [MapM
 
 ## Sampling overview
 
-<img width="4472" height="3976" alt="Sampling summary across species, brain regions, and studies" src="https://github.com/user-attachments/assets/3fdf84a9-15fd-4c02-9d9c-af3b0b34a58f" />
+![Nuclei recovered per species, and 10X Multiome sampling broken down by anatomical region for human, macaque, and marmoset](docs/sampling_summary.png)
+
+Sampling concentrates on **subcortical structures** in human, macaque, and marmoset. Neocortex is already covered in depth by earlier atlases, so this collection goes deep on the subcortex instead: basal ganglia, thalamus, hypothalamus, amygdala and extended amygdala, hippocampal formation, claustrum-endopiriform, midbrain, pons, medulla, and cerebellum. Marmoset was collected as whole-brain tiled sampling rather than dissected region by region.
+
+| Species | Donors | Libraries | Nuclei |
+|---|---|---|---|
+| Human | 12 | 1,390 | 9.7M |
+| Macaque | 15 | 364 | 2.7M |
+| Marmoset | 6 | 324 | 1.7M |
+
+The polar plots break sampling down by HOMBA higher anatomical region, so wedge length reflects sampling effort rather than cell yield. These counts cover the nuclei newly generated for HMBA by 10X Multiome; the taxonomy also incorporates cells from the external studies listed under `study` in the [Metadata dictionary](#metadata-dictionary).
 
 ---
 
