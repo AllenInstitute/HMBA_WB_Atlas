@@ -17,6 +17,7 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 - [At a glance](#at-a-glance)
 - [Regional annotation working groups](#regional-annotation-working-groups)
 - [Community annotation](#community-annotation)
+- [Planned versions](#planned-versions)
 - [Data release](#data-release)
   - [1. AIT taxonomy files](#1-ait-taxonomy-files)
   - [2. MapMyCells mapping files](#2-mapmycells-mapping-files)
@@ -58,6 +59,8 @@ Annotation is organized into working groups, each responsible for one brain regi
 | Non-neuronal WB | Yuanyuan Fu |
 | Cross-species WB | Zizhen Yao, Trygve Bakken |
 
+To request membership in a working group, contact Lauren Kruse (<lauren.kruse@alleninstitute.org>).
+
 ---
 
 ## Community annotation
@@ -72,42 +75,52 @@ In the meantime, feedback on cell type annotations is welcome; see [Contact](#co
 
 ---
 
+## Planned versions
+
+v0.5 is the current release. Dates are targets, not commitments.
+
+| Version | Target | Access | Focus |
+|---|---|---|---|
+| v1.0 | December 2026 | BICAN | Regional working group feedback, improved spatial mapping, cross-species subclass alignment |
+| v2.0 | Q2 2027 | Public | New data pull adding donors across species; delivered through ABC Atlas, MapMyCells, and brain-map |
+| v3.0 | TBD | Public | Complete cortical and subcortical sampling in all species |
+
+---
+
 ## Data release
 
 All v0.5 artifacts live under a single S3 prefix:
 
 ```
-s3://<BUCKET>/<PREFIX>/HMBA_WB_Atlas/<RELEASE_DATE>/
+s3://released-taxonomies-802451596237-us-west-2/HMBA/whole_brain/0.5/
 ```
 
-> **Note:** the bucket and prefix above are placeholders. Contact the team (see [Contact](#contact)) for the resolved path and read access.
+One subfolder per species, each holding that species' AIT taxonomy file and its MapMyCells assets:
+
+```
+0.5/
+├── human/       AIT file + MapMyCells files
+├── macaque/     AIT file + MapMyCells files
+└── marmoset/    AIT file + MapMyCells files
+```
+
+> **Note:** read access is granted per request; see [Contact](#contact).
 
 ### 1. AIT taxonomy files
 
 [AIT (Allen Institute Taxonomy)](https://github.com/AllenInstitute/AllenInstituteTaxonomy) is an AnnData-based container that bundles a taxonomy into a single self-describing file: the expression matrix, per-cell metadata, the full label hierarchy, and the latent spaces the clustering was built on all travel together. Anything you would normally have to reassemble from a matrix plus a handful of side-car tables is already joined and aligned, so one file is enough to browse the taxonomy, re-analyze it, or map new query data onto it.
 
-Each species ships as **two files** containing the same cells in two gene spaces:
-
-```
-<species>_orthologs.<ext>    # 15,138-gene ortholog space, comparable across species
-<species>_allGenes.<ext>     # species-native full gene set
-```
-
-Use the ortholog file for cross-species comparisons and the all-genes file when you need species-specific genes that have no one-to-one ortholog.
+**One AIT file per species**, carrying both gene spaces: the species-native full gene set and the 15,138-gene ortholog space shared across species. Use the ortholog space for cross-species comparisons, and the full gene set when you need species-specific genes that have no one-to-one ortholog.
 
 - `species` ∈ `{human, macaque, marmoset}`. **No AIT file is shipped for mouse.** The mouse and human whole-brain taxonomies (Yao et al., Siletti et al.) served as the references that these were mapped and aligned to.
 - All neighborhoods for a species are contained in the same file; there is no per-neighborhood split.
-- `obs` is identical across all files; see the [Metadata dictionary](#metadata-dictionary).
+- `obs` holds the per-cell metadata; see the [Metadata dictionary](#metadata-dictionary).
 - `obsm` carries the **scVI latent representations** used for integration and clustering, along with the global 2D UMAP coordinates as `X_umap`. The UMAP was computed from projected scVI embeddings from the global integration.
 - Cells flagged as junk during global or per-neighborhood integration have been removed.
 
-> **Note:** exact filenames and container format are being finalized for the release.
-
 ### 2. MapMyCells mapping files
 
-Reference assets for mapping new query data onto the HMBA WB taxonomy with [MapMyCells / cell_type_mapper](https://github.com/AllenInstitute/cell_type_mapper), provided per species.
-
-> **Note:** the file manifest for this component is being finalized.
+Reference assets for mapping new query data onto the HMBA WB taxonomy with [MapMyCells / cell_type_mapper](https://github.com/AllenInstitute/cell_type_mapper), provided per species alongside the AIT file.
 
 ---
 
