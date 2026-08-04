@@ -19,6 +19,7 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 - [Community annotation](#community-annotation)
 - [Planned versions](#planned-versions)
 - [Data release](#data-release)
+  - [Downloading](#downloading)
   - [1. AIT taxonomy files](#1-ait-taxonomy-files)
   - [2. MapMyCells mapping files](#2-mapmycells-mapping-files)
 - [Sampling overview](#sampling-overview)
@@ -104,7 +105,29 @@ One subfolder per species, each holding that species' AIT taxonomy file and its 
 └── marmoset/    AIT file + MapMyCells files
 ```
 
-> **Note:** read access is granted per request; see [Contact](#contact).
+### Downloading
+
+The bucket allows anonymous reads, so no AWS account or credentials are needed. You do need the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), and every command needs both `--no-sign-request` and `--region us-west-2`.
+
+See what is available, with sizes:
+
+```bash
+aws s3 ls s3://released-taxonomies-802451596237-us-west-2/HMBA/whole_brain/0.5/ --no-sign-request --region us-west-2 --recursive --human-readable
+```
+
+Download everything for one species:
+
+```bash
+aws s3 sync s3://released-taxonomies-802451596237-us-west-2/HMBA/whole_brain/0.5/human/ ./human/ --no-sign-request --region us-west-2
+```
+
+Download a single file:
+
+```bash
+aws s3 cp s3://released-taxonomies-802451596237-us-west-2/HMBA/whole_brain/0.5/human/<filename> . --no-sign-request --region us-west-2
+```
+
+> **Check your disk space first.** Individual files run to several GB, and the MapMyCells reference markers are roughly 8 GB per species. `aws s3 sync` is resumable, so an interrupted transfer can be restarted with the same command and will skip what already arrived.
 
 ### 1. AIT taxonomy files
 
