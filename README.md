@@ -4,7 +4,7 @@
 
 ![From the completed mouse, cross-primate basal ganglia, and marmoset subcortical atlases, through the current cross-species consensus effort, to a whole-brain taxonomy across all four species](docs/overview_image.png)
 
-The **HMBA Whole-Brain (WB) Atlas** is a cross-species, whole-brain single-cell RNA-seq taxonomy. It covers **human, macaque, and marmoset**, using the **mouse and human whole-brain taxonomies** (Yao et al., Siletti et al.) as reference, and spans roughly **21 million cells**.
+The **HMBA Whole-Brain (WB) Atlas** is a cross-species, whole-brain single-cell RNA-seq taxonomy. It covers **human, macaque, and marmoset**, using the **mouse and human whole-brain taxonomies** (Yao et al., Langlieb et al., Siletti et al.) as reference, and spans roughly **21 million cells**.
 
 This page documents the **v0.5 data share**: what is delivered, how it is organized, and what every metadata column means.
 
@@ -35,7 +35,7 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 |---|---|
 | **Version** | v0.5 |
 | **Species** | human, macaque, marmoset |
-| **References** | mouse and human whole brain (Yao et al., Siletti et al.) |
+| **References** | mouse and human whole brain (Yao et al., Langlieb et al., Siletti et al.) |
 | **Cells** | ~21 million |
 | **Taxonomy hierarchy** | `neighborhood` → `class` → `subclass` → `cluster` |
 | **Ortholog gene space** | 15,138 genes shared across human / macaque / marmoset / mouse |
@@ -135,7 +135,7 @@ aws s3 cp s3://released-taxonomies-802451596237-us-west-2/HMBA/whole_brain/0.5/h
 
 **One AIT file per species**, carrying both gene spaces: the species-native full gene set and the 15,138-gene ortholog space shared across species. Use the ortholog space for cross-species comparisons, and the full gene set when you need species-specific genes that have no one-to-one ortholog.
 
-- `species` ∈ `{human, macaque, marmoset}`. **No AIT file is shipped for mouse.** The mouse and human whole-brain taxonomies (Yao et al., Siletti et al.) served as the references that these were mapped and aligned to.
+- `species` ∈ `{human, macaque, marmoset}`. **No AIT file is shipped for mouse.** The mouse and human whole-brain taxonomies (Yao et al., Langlieb et al., Siletti et al.) served as the references that these were mapped and aligned to.
 - All neighborhoods for a species are contained in the same file; there is no per-neighborhood split.
 - `obs` holds the per-cell metadata; see the [Metadata dictionary](#metadata-dictionary).
 - `obsm` carries the **scVI latent representations** used for integration and clustering, along with the global 2D UMAP coordinates as `X_umap`. The UMAP was computed from projected scVI embeddings from the global integration.
