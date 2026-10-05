@@ -26,7 +26,6 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 - [Pipeline](#pipeline)
 - [Metadata dictionary](#metadata-dictionary)
 - [Contact](#contact)
-- [Check-in agenda automation](#check-in-agenda-automation)
 
 ---
 
