@@ -16,6 +16,7 @@ This page documents the **v0.5 data share**: what is delivered, how it is organi
 
 - [At a glance](#at-a-glance)
 - [Regional annotation working groups](#regional-annotation-working-groups)
+- [Spatial transcriptomics data](#spatial-transcriptomics-data)
 - [Community annotation](#community-annotation)
 - [Planned versions](#planned-versions)
 - [Data release](#data-release)
@@ -61,6 +62,23 @@ Annotation is organized into working groups, each responsible for one brain regi
 | Cross-species WB | Zizhen Yao, Trygve Bakken |
 
 To request membership in a working group, contact Lauren Kruse (<lauren.kruse@alleninstitute.org>).
+
+---
+
+## Spatial transcriptomics data
+
+Spatial transcriptomics datasets are available to **Regional Annotation Working Group members only** via the ABC Atlas viewer to assist in cell type annotation. The marmoset dataset is an extended version of data published in the [marmoset subcortical atlas](https://www.biorxiv.org/content/10.1101/2025.11.22.689869v1). Macaque and human data are unpublished datasets with QC and analysis ongoing. All four datasets have been mapped to the HMBA WB taxonomy v0.5.
+
+![Marmoset spatial transcriptomics](docs/spatial_data.png)
+
+| Dataset | Platform | Panel | Coverage | Section interval |
+|---|---|---|---|---|
+| CJ23.56.004 (Marmoset) | Xenium | 480 genes | Full hemisphere | ~200 µm |
+| QM24.50.002 (Macaque) | Xenium | 480 genes | Full hemisphere | ~1 mm |
+| QM23.50.003 (Macaque) | Stereo-seq | Transcriptome-wide | Full hemisphere | ~4 mm |
+| H24.30.005 (Human) | Xenium | 480 genes | Hippocampal formation | ~1 mm |
+
+These datasets support spatial validation and refinement of cell type labels within each working group's region. They are not part of the public v0.5 data release. For access, see [Contact](#contact).
 
 ---
 
