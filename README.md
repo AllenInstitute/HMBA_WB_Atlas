@@ -73,10 +73,10 @@ Spatial transcriptomics datasets are available to **Regional Annotation Working 
 
 | Dataset | Platform | Panel | Coverage | Section interval |
 |---|---|---|---|---|
-| CJ23.56.004 (Marmoset) | Xenium | 480 genes | Full hemisphere | ~200 µm |
+| CJ23.56.004 (Marmoset) | Xenium | 300 genes | Full hemisphere | ~200 µm |
 | QM24.50.002 (Macaque) | Xenium | 480 genes | Full hemisphere | ~1 mm |
 | QM23.50.003 (Macaque) | Stereo-seq | Transcriptome-wide | Full hemisphere | ~4 mm |
-| H24.30.005 (Human) | Xenium | 480 genes | Hippocampal formation | ~1 mm |
+| H24.30.005 (Human) | Xenium | 433 genes | Hippocampal formation | ~1 mm |
 
 These datasets support spatial validation and refinement of cell type labels within each working group's region. They are not part of the public v0.5 data release. For access, see [Contact](#contact).
 
